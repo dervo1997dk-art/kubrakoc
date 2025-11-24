@@ -86,7 +86,26 @@ text-align:center;
 .divider{height:1px;width:54%;margin:8px auto 18px;
 background:linear-gradient(90deg,transparent,#ffffff20,transparent)}
 
-.signature{margin-top:6px}
+/* Resim stili */
+.image-container{
+margin:18px 0;
+text-align:center;
+}
+.main-image{
+max-width:100%;
+width:auto;
+height:auto;
+max-height:200px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+opacity:0.9;
+transition:opacity 0.3s ease;
+}
+.main-image:hover{
+opacity:1;
+}
+
+.signature{margin-top:18px}
 .sig-box{
 display:inline-block;padding:12px 22px;
 border-radius:10px;background:transparent;
@@ -112,6 +131,9 @@ width:40px;height:36px;
 .quote{font-size:15px;max-width:90%}
 .subtitle{font-size:14px}
 .sig-box{font-size:18px}
+.main-image{
+max-height:150px;
+}
 }
 </style>
 </head>
@@ -147,6 +169,11 @@ window.addEventListener('DOMContentLoaded', () => {
 <div class="quotes" aria-live="polite"></div>
 
 <div class="divider" aria-hidden="true"></div>
+
+<!-- Resim alanı -->
+<div class="image-container">
+<img src="resim.jpg" alt="Özel resim" class="main-image">
+</div>
 
 <div class="signature">
 <div class="sig-box">Derviş</div>
