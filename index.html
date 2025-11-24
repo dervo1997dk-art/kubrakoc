@@ -1,272 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sevgi Mesajı</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --accent: #ff2d55;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            text-align: center;
-            max-width: 500px;
-            padding: 20px;
-        }
-        
-        h1 {
-            font-size: clamp(24px, 7vw, 36px);
-            font-weight: 600;
-            margin: 0 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-        
-        /* Kalp alanı */
-        .heart-wrap {
-            width: 54px;
-            height: 54px;
-            margin-left: 6px;
-            display: inline-block;
-            position: relative;
-            transform-origin: center;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(-6deg) }
-            50% { transform: translateY(-8px) rotate(6deg) }
-            100% { transform: translateY(0) rotate(-6deg) }
-        }
-        
-        .heart {
-            width: 54px;
-            height: 48px;
-            position: relative;
-            display: inline-block;
-            animation: beat 1000ms infinite;
-            transform: rotate(-45deg);
-        }
-        
-        .heart:before, .heart:after {
-            content: '';
-            width: 26px;
-            height: 40px;
-            position: absolute;
-            left: 27px;
-            transform-origin: 0 100%;
-            background: var(--accent);
-            border-radius: 26px 26px 0 0;
-            transform: rotate(-45deg);
-            box-shadow: 0 8px 20px rgba(255, 45, 85, 0.22);
-        }
-        
-        .heart:after {
-            left: 0;
-            transform: rotate(45deg);
-            transform-origin: 100% 100%;
-        }
-        
-        @keyframes beat {
-            0% { transform: rotate(-45deg) scale(1) }
-            30% { transform: rotate(-45deg) scale(1.14) }
-            45% { transform: rotate(-45deg) scale(0.98) }
-            60% { transform: rotate(-45deg) scale(1.06) }
-            100% { transform: rotate(-45deg) scale(1) }
-        }
-        
-        .subtitle {
-            margin: 12px 0 22px;
-            font-weight: 300;
-            opacity: 0.95;
-            font-size: 15px;
-        }
-        
-        .quotes {
-            height: 92px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            margin: 8px 0 18px;
-        }
-        
-        .quote {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) translateY(10px);
-            opacity: 0;
-            transition: all 600ms cubic-bezier(.2, .9, .3, 1);
-            font-size: 18px;
-            max-width: 86%;
-            font-weight: 500;
-            line-height: 1.35;
-            font-family: Montserrat;
-            text-align: center;
-        }
-        
-        .quote.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) translateY(0);
-        }
-        
-        .divider {
-            height: 1px;
-            width: 54%;
-            margin: 8px auto 18px;
-            background: linear-gradient(90deg, transparent, #ffffff20, transparent);
-        }
-        
-        .signature {
-            margin-top: 6px;
-        }
-        
-        .sig-box {
-            display: inline-block;
-            padding: 12px 22px;
-            border-radius: 10px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-        }
-        
-        .note {
-            margin-top: 8px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        /* --- Mobil uyarlamalar --- */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: clamp(20px, 6vw, 30px);
-                flex-direction: column;
-                gap: 6px;
-            }
-            
-            .heart-wrap {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .heart {
-                width: 40px;
-                height: 36px;
-            }
-            
-            .line {
-                white-space: normal;
-            }
-            
-            .quote {
-                font-size: 15px;
-                max-width: 90%;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
-            
-            .sig-box {
-                font-size: 18px;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Seni seviyorum Kübra</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#071029; --card:#0d1630; --text:#f7f9fc; --accent:#ff2d55; }
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+display:flex;align-items:center;justify-content:center;
+padding:28px;font-family:Montserrat,system-ui,Arial;color:var(--text);
+background: radial-gradient(circle at 10% 10%, #09203a 0%, var(--bg) 45%);
+}
+.card{
+width:100%;max-width:820px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+border-radius:16px;padding:36px;box-shadow:0 12px 30px rgba(2,6,23,0.6);text-align:center;position:relative;overflow:hidden;
+}
+
+h1{
+font-family:'Playfair Display', serif;
+margin:0;
+font-size:clamp(24px,4.5vw,44px);
+display:inline-flex;
+flex-wrap:wrap;
+gap:10px;
+align-items:center;
+justify-content:center;
+font-weight:700;
+text-align:center;
+}
+.line{white-space:normal;text-align:center}
+
+/* Kalp alanı */
+.heart-wrap{
+width:54px;height:54px;margin-left:6px;display:inline-block;
+position:relative;transform-origin:center;
+animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+0%{transform:translateY(0) rotate(-6deg)}
+50%{transform:translateY(-8px) rotate(6deg)}
+100%{transform:translateY(0) rotate(-6deg)}
+}
+.heart{
+width:54px;height:48px;position:relative;
+display:inline-block;animation:beat 1000ms infinite;
+transform:rotate(-45deg);
+}
+.heart:before,
+.heart:after{
+content:'';width:26px;height:40px;position:absolute;left:27px;
+transform-origin:0 100%;background:var(--accent);
+border-radius:26px 26px 0 0;transform:rotate(-45deg);
+box-shadow:0 8px 20px rgba(255,45,85,0.22);
+}
+.heart:after{
+left:0;transform:rotate(45deg);transform-origin:100% 100%;
+}
+@keyframes beat{
+0%{transform:rotate(-45deg) scale(1)}
+30%{transform:rotate(-45deg) scale(1.14)}
+45%{transform:rotate(-45deg) scale(0.98)}
+60%{transform:rotate(-45deg) scale(1.06)}
+100%{transform:rotate(-45deg) scale(1)}
+}
+
+.subtitle{margin:12px 0 22px;font-weight:300;opacity:0.95;font-size:15px}
+
+.quotes{
+height:92px;display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;margin:8px 0 18px;
+}
+.quote{
+position:absolute;left:50%;top:50%;
+transform:translate(-50%,-50%) translateY(10px);
+opacity:0;transition:all 600ms cubic-bezier(.2,.9,.3,1);
+font-size:18px;max-width:86%;font-weight:500;line-height:1.35;
+font-family:Montserrat;
+text-align:center;
+}
+.quote.show{opacity:1;transform:translate(-50%,-50%) translateY(0)}
+
+.divider{height:1px;width:54%;margin:8px auto 18px;
+background:linear-gradient(90deg,transparent,#ffffff20,transparent)}
+
+.signature{margin-top:6px}
+.sig-box{
+display:inline-block;padding:12px 22px;
+border-radius:10px;background:transparent;
+border:1px solid rgba(255,255,255,0.04);
+font-family:'Playfair Display', serif;font-size:20px;
+}
+.note{margin-top:8px;font-size:13px;color:rgba(255,255,255,0.6)}
+
+/* --- Mobil uyarlamalar --- */
+@media (max-width:600px){
+h1{
+font-size:clamp(20px,6vw,30px);
+flex-direction:column;
+gap:6px;
+}
+.heart-wrap{
+width:40px;height:40px;
+}
+.heart{
+width:40px;height:36px;
+}
+.line{white-space:normal}
+.quote{font-size:15px;max-width:90%}
+.subtitle{font-size:14px}
+.sig-box{font-size:18px}
+}
+</style>
 </head>
 <body>
-    <!-- Müzik otomatik başlatılacak -->
-    <audio id="backgroundMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-        Tarayıcınız audio elementini desteklemiyor.
-    </audio>
+<div id="player" style="display:none;"></div>
 
-    <div class="container">
-        <h1>
-            <span class="line">Seni Seviyorum</span>
-            <div class="heart-wrap">
-                <div class="heart"></div>
-            </div>
-        </h1>
-        
-        <p class="subtitle">Her anımda yanımdasın</p>
-        
-        <div class="quotes">
-            <div class="quote show">
-                "Aşk, iki kalbin tek ritimde atmasıdır."
-            </div>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <div class="signature">
-            <div class="sig-box">
-                ❤️ Canım Sevgilim ❤️
-            </div>
-            <p class="note">Sonsuza kadar seninle</p>
-        </div>
-    </div>
+<audio id="bgMusic" loop>
+  <source src="ses.mp3" type="audio/mpeg">
+</audio>
 
-    <script>
-        // Müzik otomatik başlatma
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('backgroundMusic');
-            
-            // Kullanıcı etkileşimi sonrası müziği başlat
-            document.addEventListener('click', function() {
-                audio.play().catch(function(error) {
-                    console.log('Müzik çalınamadı:', error);
-                });
-            }, { once: true });
-            
-            // Sayfa yüklendiğinde müziği başlatmaya çalış
-            setTimeout(function() {
-                audio.play().catch(function(error) {
-                    console.log('Otomatik müzik başlatılamadı, kullanıcı etkileşimi bekleniyor.');
-                });
-            }, 500);
-        });
+<!-- Müzik kontrol butonu ekle -->
+<div class="music-control" onclick="toggleMusic()">🎵</div>
 
-        // Quotes rotasyonu (isteğe bağlı)
-        const quotes = [
-            "Aşk, iki kalbin tek ritimde atmasıdır.",
-            "Sen benim hayatımın en güzel şarkısısın.",
-            "Seninle geçen her an bir mucize.",
-            "Kalbim sadece senin için atıyor."
-        ];
-        
-        let currentQuote = 0;
-        const quoteElement = document.querySelector('.quote');
-        
-        function changeQuote() {
-            quoteElement.classList.remove('show');
-            setTimeout(() => {
-                currentQuote = (currentQuote + 1) % quotes.length;
-                quoteElement.textContent = quotes[currentQuote];
-                quoteElement.classList.add('show');
-            }, 600);
-        }
-        
-        // Her 4 saniyede bir quote değiştir
-        setInterval(changeQuote, 4000);
-    </script>
+<style>
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1000;
+}
+</style>
+
+<script>
+const audio = document.getElementById('bgMusic');
+let isPlaying = true;
+
+function toggleMusic() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  isPlaying = !isPlaying;
+}
+ 
+</script>
+  
+<div class="card" role="main" aria-label="Sevgi mesajı">
+<h1>
+<span class="line">Seni seviyorum Kübrammm</span>
+<span class="heart-wrap" aria-hidden="false" title="kırmızı kalp">
+<span class="heart"></span>
+</span>
+</h1>
+<p class="subtitle">Her saniye seni düşünüyorum kalbim seninle atıyor.</p>
+
+<div class="quotes" aria-live="polite"></div>
+
+<div class="divider" aria-hidden="true"></div>
+
+<div class="signature">
+<div class="sig-box">Derviş</div>
+<div class="note">Kocan <3</div>
+</div>
+</div>
+
+<script>
+const quotes = [
+"Sen benim iyikimsin Kübrammm.",
+"Kalbimin ritmini bozan tek doktor sensin.",  
+"Seninle her hayal gerçek gibi; rüyalarım en güzel yerde seninle buluşuyor.",
+"Gözlerinin içinde kaybolmak, dünyadaki en huzurlu limanımı bulmak gibi.",
+"Ruhun deniz kadar derin; her dalgada sana biraz daha âşık oluyorum.",
+"Seninle geçen anlar şiir oluyor — ben kelimelerle yetinemiyorum."
+];
+
+const container = document.querySelector('.quotes');
+const elems = quotes.map(text => {
+const el = document.createElement('div');
+el.className = 'quote';
+el.textContent = text;
+container.appendChild(el);
+return el;
+});
+
+let idx = 0;
+function showQuote(i){
+elems.forEach((el, j) => el.classList.toggle('show', j === i));
+}
+showQuote(idx);
+setInterval(() => {
+idx = (idx + 1) % elems.length;
+showQuote(idx);
+}, 3500);
+
+const heart = document.querySelector('.heart');
+heart.addEventListener('click', ()=>{
+heart.style.animation = 'beat 600ms infinite';
+setTimeout(()=> heart.style.animation = 'beat 1000ms infinite', 1000);
+});
+</script>
 </body>
 </html>
