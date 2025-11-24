@@ -142,9 +142,50 @@ width:40px;height:36px;
   z-index: 1000;
 }
 </style>
-audio.play();
+
 <script>
-audio.play();
+  
+  // Müzik otomatik başlatma
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('backgroundMusic');
+            
+            // Kullanıcı etkileşimi sonrası müziği başlat
+            document.addEventListener('click', function() {
+                audio.play().catch(function(error) {
+                    console.log('Müzik çalınamadı:', error);
+                });
+            }, { once: true });
+            
+            // Sayfa yüklendiğinde müziği başlatmaya çalış
+            setTimeout(function() {
+                audio.play().catch(function(error) {
+                    console.log('Otomatik müzik başlatılamadı, kullanıcı etkileşimi bekleniyor.');
+                });
+            }, 500);
+        });
+
+        // Quotes rotasyonu (isteğe bağlı)
+        const quotes = [
+            "Aşk, iki kalbin tek ritimde atmasıdır.",
+            "Sen benim hayatımın en güzel şarkısısın.",
+            "Seninle geçen her an bir mucize.",
+            "Kalbim sadece senin için atıyor."
+        ];
+        
+        let currentQuote = 0;
+        const quoteElement = document.querySelector('.quote');
+        
+        function changeQuote() {
+            quoteElement.classList.remove('show');
+            setTimeout(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quoteElement.textContent = quotes[currentQuote];
+                quoteElement.classList.add('show');
+            }, 600);
+        }
+        
+        // Her 4 saniyede bir quote değiştir
+        setInterval(changeQuote, 4000);
  
 </script>
   
