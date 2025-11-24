@@ -118,77 +118,23 @@ width:40px;height:36px;
 <body>
 <div id="player" style="display:none;"></div>
 
-<audio id="bgMusic" loop>
+<!-- Ses dosyası -->
+<audio id="bgMusic" loop autoplay>
   <source src="ses.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Müzik kontrol butonu ekle -->
-<div class="music-control" onclick="toggleMusic()">🎵</div>
-
-<style>
-.music-control {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background: var(--accent);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 1000;
-}
-</style>
-
 <script>
-  
-  // Müzik otomatik başlatma
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('backgroundMusic');
-            
-            // Kullanıcı etkileşimi sonrası müziği başlat
-            document.addEventListener('click', function() {
-                audio.play().catch(function(error) {
-                    console.log('Müzik çalınamadı:', error);
-                });
-            }, { once: true });
-            
-            // Sayfa yüklendiğinde müziği başlatmaya çalış
-            setTimeout(function() {
-                audio.play().catch(function(error) {
-                    console.log('Otomatik müzik başlatılamadı, kullanıcı etkileşimi bekleniyor.');
-                });
-            }, 500);
-        });
-
-        // Quotes rotasyonu (isteğe bağlı)
-        const quotes = [
-            "Aşk, iki kalbin tek ritimde atmasıdır.",
-            "Sen benim hayatımın en güzel şarkısısın.",
-            "Seninle geçen her an bir mucize.",
-            "Kalbim sadece senin için atıyor."
-        ];
-        
-        let currentQuote = 0;
-        const quoteElement = document.querySelector('.quote');
-        
-        function changeQuote() {
-            quoteElement.classList.remove('show');
-            setTimeout(() => {
-                currentQuote = (currentQuote + 1) % quotes.length;
-                quoteElement.textContent = quotes[currentQuote];
-                quoteElement.classList.add('show');
-            }, 600);
-        }
-        
-        // Her 4 saniyede bir quote değiştir
-        setInterval(changeQuote, 4000);
- 
+// Otomatik müzik başlatma
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('bgMusic');
+  // Bazı tarayıcılarda kullanıcı etkileşimi gerekebilir
+  audio.play().catch(err => {
+    console.log("Tarayıcı otomatik çalmayı engelledi:", err);
+    document.body.addEventListener('click', () => audio.play(), { once: true });
+  });
+});
 </script>
-  
+
 <div class="card" role="main" aria-label="Sevgi mesajı">
 <h1>
 <span class="line">Seni seviyorum Kübrammm</span>
