@@ -118,30 +118,42 @@ width:40px;height:36px;
 <body>
 <div id="player" style="display:none;"></div>
 
-<script>
-// YouTube API yükle
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+<audio id="bgMusic" loop>
+  <source src="ses.mp3" type="audio/mpeg">
+</audio>
 
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '0',
-    width: '0',
-    videoId: 'y6FnAIDbxps', // Video ID'niz
-    events: {
-      'onReady': onPlayerReady
-    }
-  });
+<!-- Müzik kontrol butonu ekle -->
+<div class="music-control" onclick="toggleMusic()">🎵</div>
+
+<style>
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1000;
 }
+</style>
 
-function onPlayerReady(event) {
-  // İlk tıklamada çal
-  document.body.addEventListener('click', function() {
-    event.target.playVideo();
-  }, { once: true });
+<script>
+const audio = document.getElementById('bgMusic');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  isPlaying = !isPlaying;
 }
 </script>
   
